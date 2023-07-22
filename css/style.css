@@ -627,7 +627,7 @@ header{
 		margin-bottom: 20px;
 	}
 	.header-delete{
-		padding: 15px;
+		padding: 35px;
 	}
 	.header-shopping{
 		padding: 20px;
@@ -646,4 +646,7 @@ header{
 	.sigaret-text h2 {
 		font-size: 14px;
   }
+  .header-shopping-block{
+	grid-template-columns: 60% 40%;
+}
 }
