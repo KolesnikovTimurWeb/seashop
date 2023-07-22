@@ -145,7 +145,6 @@ const initialState = () => {
 
       document.querySelectorAll('.cart-content__product').forEach(el => {
          let id = el.dataset.id;
-         console.log(id)
          document.querySelector(`.product[data-id="${id}"]`).querySelector('.product__btn').disabled = true;
       });
    }
@@ -155,7 +154,6 @@ const initialState = () => {
 const updateStorage = () => {
    let parent = cartProductList;
    let html = parent.innerHTML;
-   console.log(html)
 
    html = html.trim();
 
@@ -197,25 +195,24 @@ const deleteProducts = (productParent) => {
 
    let conter = productParent.querySelector('.header-shopping-counter');
 
-   console.log(productParent.querySelector('.header-shopping-price').textContent)
    let currentPrice = parseInt(priceWithoutSpaces(productParent.querySelector('.header-shopping-price').textContent));
-   console.log(currentPrice)
 
    minusFullPrice(parseInt(currentPrice * conter.textContent));
    printFullPrice();
    productParent.remove();
-   printQuantity();
+
 
 };
 
 cartProductList.addEventListener('click', (e) => {
-   let deleteButton = document.querySelector('.header-delete')
 
-   deleteButton.addEventListener('click', function (e) {
+
+
+   if (e.target.classList.contains('header-delete')) {
+
       deleteProducts(e.target.closest('.header-shopping-item'));
 
-   })
-
+   }
 });
 
 
@@ -301,10 +298,8 @@ productBtn.forEach(el => {
       headerPlus.addEventListener('click', function (el) {
          let self = el.currentTarget;
 
-         console.log()
 
          let parent = self.closest('.header-shopping-item');
-         console.log(parent)
 
          let id = parent.dataset.id;
          plusFullPrice(priceNumber);
