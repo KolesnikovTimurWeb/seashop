@@ -205,21 +205,20 @@ const deleteProducts = (productParent) => {
    printFullPrice();
    productParent.remove();
    printQuantity();
-   updateStorage();
+
 };
 
 cartProductList.addEventListener('click', (e) => {
-   console.log('deltert')
+   let deleteButton = document.querySelector('.header-delete')
 
-
-
-   if (e.target.classList.contains('header-delete')) {
-      console.log('deltert 22')
-
+   deleteButton.addEventListener('click', function (e) {
       deleteProducts(e.target.closest('.header-shopping-item'));
 
-   }
+   })
+
 });
+
+
 
 
 
@@ -249,8 +248,9 @@ const generateCartProduct = (img, title, counter, price, id) => {
             
 
          </div>
-         
-         <button class='header-delete'><img src="./img/bin.png" alt=""></button>
+         <button class="header-delete">
+          <img src="./img/bin.png" alt="">
+         </button>
       </div>
 
 </div>
@@ -288,7 +288,7 @@ productBtn.forEach(el => {
 
       plusFullPrice(priceNumber);
       printFullPrice();
-      updateStorage();
+
 
       cartProductList.insertAdjacentHTML('afterbegin', generateCartProduct(img, title, counter, priceString, id));
       printQuantity();
@@ -342,14 +342,14 @@ productBtn.forEach(el => {
 
 
 
-document.querySelector('.modal').addEventListener('click', (e) => {
-   if (e.target.classList.contains('order-product__delete')) {
-      let id = e.target.closest('.order-modal__product').dataset.id;
-      let cartProduct = document.querySelector(`.cart-content__product[data-id="${id}"]`).closest('.cart-content__item');
-      deleteProducts(cartProduct)
-      e.target.closest('.order-modal__product').remove();
-   }
-});
+// document.querySelector('.modal').addEventListener('click', (e) => {
+//    if (e.target.classList.contains('order-product__delete')) {
+//       let id = e.target.closest('.order-modal__product').dataset.id;
+//       let cartProduct = document.querySelector(`.cart-content__product[data-id="${id}"]`).closest('.cart-content__item');
+//       deleteProducts(cartProduct)
+//       e.target.closest('.order-modal__product').remove();
+//    }
+// });
 
 
 
